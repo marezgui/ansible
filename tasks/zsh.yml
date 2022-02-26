@@ -1,0 +1,36 @@
+- name: install zsh
+  become: true
+  apt: name=zsh
+  tags:
+    - zsh
+- name: change shell
+  become: true
+  shell: chsh -s `which zsh`
+  tags:
+    - zsh
+- name: install ohmyzsh
+  become_user: docker
+  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+  tags:
+    - ohmyzsh
+- name: install the zsh plugin autosuggestions
+  become_user: docker
+  ansible.builtin.git: 
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags:
+    - zsh
+- name: install the zsh plugin syntax highlighting
+  become_user: docker
+  ansible.builtin.git: 
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "~/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+  tags:
+    - zsh
+- name: copy my config file
+  become_user: docker
+  copy:
+      src: config/zsh/zshrc
+      dest: $HOME/.zshrc
+  tags:
+    - zsh

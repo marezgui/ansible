@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "${env:HOME}/front"
+		},
+	],
+	"settings": {
+		"files.associations": {
+			"*.env.local": "env",
+		},
+		"editor.tabSize": 2,
+		"discord.enabled": true,
+		"standard.enable": false,
+		"workbench.colorCustomizations": {
+			"editorError.foreground": "#c91c4263"
+		},
+		"editor.codeActionsOnSave": {
+			"source.fixAll": true,
+		},
+		"stylelint.enable": true,
+		"stylelint.validate": [
+			"css",
+			"scss",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact"
+		],
+		"conventionalCommits.scopes": [
+			"test"
+		],
+	},
+}

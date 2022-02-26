@@ -1,0 +1,11 @@
+- name: Create mpx directory
+  file:
+    path: $HOME/mpx
+    state: directory
+- name: copy the mpx config file
+  become_user: docker
+  copy:
+      src: config/zsh/zshrc.mpx
+      dest: $HOME/mpx/.zshrc.mpx
+  tags:
+    - zsh
